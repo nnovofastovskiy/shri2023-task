@@ -19,6 +19,10 @@ module.exports = {
     module: {
         rules: [
             {
+                test: /\.html$/i,
+                loader: "html-loader",
+            },
+            {
                 test: /\.(js|jsx)$/, // .js and .jsx files
                 exclude: /node_modules/, // excluding the node_modules folder
                 use: {
