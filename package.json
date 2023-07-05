@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "Оптимизировать страницу, выложить результат на Github-Pages и отправить его на проверку на [https://shri-performance.ru/](https://shri-performance.ru/), отправив адрес вашей страницы. Нужно набрать минимум **100 баллов**.",
   "main": "index.js",
+  "type": "module",
   "scripts": {
     "serve": "webpack serve --mode development",
     "build": "webpack --mode production",
