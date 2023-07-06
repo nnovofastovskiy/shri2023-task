@@ -26,8 +26,9 @@ module.exports = {
                 },
             },
             {
-                test: /\.(sa|sc|c)ss$/, // styles files
-                use: [MiniCssExtractPlugin.loader, "css-loader", "sass-loader"],
+                test: /\.css$/, // styles files
+                use: [MiniCssExtractPlugin.loader,
+                { loader: 'css-loader', options: { sourceMap: true } },],
             },
             {
                 test: /\.(png|woff|woff2|eot|ttf|svg)$/, // to import images and fonts
@@ -39,7 +40,9 @@ module.exports = {
     optimization: {
         minimize: true,
         minimizer: [
-            new CssMinimizerPlugin(),
+            new CssMinimizerPlugin({
+                include: /\.css$/,
+            }),
         ],
     },
     plugins: [new MiniCssExtractPlugin()],
