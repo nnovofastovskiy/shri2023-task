@@ -3185,25 +3185,12 @@ function Header() {
 ;// CONCATENATED MODULE: ./src/Event.jsx
 
 function Event(_ref) {
-  var onSize = _ref.onSize,
-    slim = _ref.slim,
+  var slim = _ref.slim,
     icon = _ref.icon,
     iconLabel = _ref.iconLabel,
     title = _ref.title,
     subtitle = _ref.subtitle;
-  var ref = react.useRef();
-  react.useEffect(function () {
-    var width = ref.current.offsetWidth;
-    var height = ref.current.offsetHeight;
-    if (onSize) {
-      onSize({
-        width: width,
-        height: height
-      });
-    }
-  });
   return /*#__PURE__*/react.createElement("li", {
-    ref: ref,
     className: 'event' + (slim ? ' event_slim' : '')
   }, /*#__PURE__*/react.createElement("button", {
     className: "event__button"
@@ -3217,67 +3204,11 @@ function Event(_ref) {
     className: "event__subtitle"
   }, subtitle)));
 }
-;// CONCATENATED MODULE: ./src/index.js
-function _extends() { _extends = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
-function src_slicedToArray(arr, i) { return src_arrayWithHoles(arr) || src_iterableToArrayLimit(arr, i) || src_unsupportedIterableToArray(arr, i) || src_nonIterableRest(); }
-function src_nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-function src_unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return src_arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return src_arrayLikeToArray(o, minLen); }
-function src_arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i]; return arr2; }
-function src_iterableToArrayLimit(arr, i) { var _i = null == arr ? null : "undefined" != typeof Symbol && arr[Symbol.iterator] || arr["@@iterator"]; if (null != _i) { var _s, _e, _x, _r, _arr = [], _n = !0, _d = !1; try { if (_x = (_i = _i.call(arr)).next, 0 === i) { if (Object(_i) !== _i) return; _n = !1; } else for (; !(_n = (_s = _x.call(_i)).done) && (_arr.push(_s.value), _arr.length !== i); _n = !0); } catch (err) { _d = !0, _e = err; } finally { try { if (!_n && null != _i["return"] && (_r = _i["return"](), Object(_r) !== _r)) return; } finally { if (_d) throw _e; } } return _arr; } }
-function src_arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+;// CONCATENATED MODULE: ./src/General.jsx
 
 
-
-
-
-var TABS_KEYS = Object.keys(tabs);
-function Main() {
-  var ref = react.useRef();
-  var initedRef = react.useRef(false);
-  var _React$useState = react.useState(''),
-    _React$useState2 = src_slicedToArray(_React$useState, 2),
-    activeTab = _React$useState2[0],
-    setActiveTab = _React$useState2[1];
-  var _React$useState3 = react.useState(false),
-    _React$useState4 = src_slicedToArray(_React$useState3, 2),
-    hasRightScroll = _React$useState4[0],
-    setHasRightScroll = _React$useState4[1];
-  react.useEffect(function () {
-    if (!activeTab && !initedRef.current) {
-      initedRef.current = true;
-      setActiveTab(new URLSearchParams(location.search).get('tab') || 'all');
-    }
-  });
-  var onSelectInput = function onSelectInput(event) {
-    setActiveTab(event.target.value);
-  };
-  var sizes = [];
-  var onSize = react.useCallback(function (size) {
-    sizes.push(size);
-  }, [sizes]);
-  react.useEffect(function () {
-    var sumWidth = sizes.reduce(function (acc, item) {
-      return acc + item.width;
-    }, 0);
-    // const sumHeight = sizes.reduce((acc, item) => acc + item.height, 0);
-
-    var newHasRightScroll = sumWidth > ref.current.offsetWidth;
-    if (newHasRightScroll !== hasRightScroll) {
-      setHasRightScroll(newHasRightScroll);
-    }
-  });
-  var onArrowCLick = function onArrowCLick() {
-    var scroller = ref.current.querySelector('.section__panel:not(.section__panel_hidden)');
-    if (scroller) {
-      scroller.scrollTo({
-        left: scroller.scrollLeft + 400,
-        behavior: 'smooth'
-      });
-    }
-  };
-  return /*#__PURE__*/react.createElement("main", {
-    className: "main"
-  }, /*#__PURE__*/react.createElement("section", {
+function General() {
+  return /*#__PURE__*/react.createElement("section", {
     className: "section main__general"
   }, /*#__PURE__*/react.createElement("h2", {
     className: "section__title section__title-header section__main-title"
@@ -3328,7 +3259,13 @@ function Main() {
     iconLabel: "\u041E\u0441\u0432\u0435\u0449\u0435\u043D\u0438\u0435",
     title: "Xiaomi Yeelight LED Smart Bulb",
     subtitle: "\u0412\u043A\u043B\u044E\u0447\u0438\u0442\u0441\u044F \u0432 17:00"
-  })))), /*#__PURE__*/react.createElement("section", {
+  }))));
+}
+;// CONCATENATED MODULE: ./src/Scripts.jsx
+
+
+function Scripts() {
+  return /*#__PURE__*/react.createElement("section", {
     className: "section main__scripts"
   }, /*#__PURE__*/react.createElement("h2", {
     className: "section__title section__title-header"
@@ -3360,7 +3297,74 @@ function Main() {
     icon: "temp2",
     iconLabel: "\u0422\u0435\u043C\u043F\u0435\u0440\u0430\u0442\u0443\u0440\u0430",
     title: "\u0421\u0434\u0435\u043B\u0430\u0442\u044C \u043F\u043E\u043B \u0442\u0451\u043F\u043B\u044B\u043C \u0432\u043E \u0432\u0441\u0435\u0439 \u043A\u0432\u0430\u0440\u0442\u0438\u0440\u0435"
-  }))), /*#__PURE__*/react.createElement("section", {
+  })));
+}
+;// CONCATENATED MODULE: ./src/index.js
+function _extends() { _extends = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
+function src_slicedToArray(arr, i) { return src_arrayWithHoles(arr) || src_iterableToArrayLimit(arr, i) || src_unsupportedIterableToArray(arr, i) || src_nonIterableRest(); }
+function src_nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function src_unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return src_arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return src_arrayLikeToArray(o, minLen); }
+function src_arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i]; return arr2; }
+function src_iterableToArrayLimit(arr, i) { var _i = null == arr ? null : "undefined" != typeof Symbol && arr[Symbol.iterator] || arr["@@iterator"]; if (null != _i) { var _s, _e, _x, _r, _arr = [], _n = !0, _d = !1; try { if (_x = (_i = _i.call(arr)).next, 0 === i) { if (Object(_i) !== _i) return; _n = !1; } else for (; !(_n = (_s = _x.call(_i)).done) && (_arr.push(_s.value), _arr.length !== i); _n = !0); } catch (err) { _d = !0, _e = err; } finally { try { if (!_n && null != _i["return"] && (_r = _i["return"](), Object(_r) !== _r)) return; } finally { if (_d) throw _e; } } return _arr; } }
+function src_arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+
+
+
+
+
+
+var TABS_KEYS = Object.keys(tabs);
+function Main() {
+  var ref = react.useRef();
+  var initedRef = react.useRef(false);
+  var _React$useState = react.useState(''),
+    _React$useState2 = src_slicedToArray(_React$useState, 2),
+    activeTab = _React$useState2[0],
+    setActiveTab = _React$useState2[1];
+  var _React$useState3 = react.useState(false),
+    _React$useState4 = src_slicedToArray(_React$useState3, 2),
+    hasRightScroll = _React$useState4[0],
+    setHasRightScroll = _React$useState4[1];
+  react.useEffect(function () {
+    if (!activeTab && !initedRef.current) {
+      initedRef.current = true;
+      setActiveTab(new URLSearchParams(location.search).get('tab') || 'all');
+    }
+  });
+  var onSelectInput = function onSelectInput(event) {
+    setActiveTab(event.target.value);
+  };
+
+  // let sizes = [];
+  // const onSize = React.useCallback((size) => {
+  //     sizes.push(size);
+  // }, [sizes]);
+
+  react.useEffect(function () {
+    // const sumWidth = sizes.reduce((acc, item) => acc + item.width, 0);
+    // console.log(sumWidth);
+    var sumWidth = activeTab ? ref.current.querySelector('.event').offsetWidth * tabs[activeTab].items.length : 0;
+    // console.log('my', mySumWidth);
+    // const sumHeight = sizes.reduce((acc, item) => acc + item.height, 0);
+
+    var newHasRightScroll = sumWidth > ref.current.offsetWidth;
+    if (newHasRightScroll !== hasRightScroll) {
+      setHasRightScroll(newHasRightScroll);
+    }
+  }, [activeTab]);
+  var onArrowCLick = function onArrowCLick() {
+    var scroller = ref.current.querySelector('.section__panel:not(.section__panel_hidden)');
+    if (scroller) {
+      scroller.scrollTo({
+        left: scroller.scrollLeft + 400,
+        behavior: 'smooth'
+      });
+    }
+  };
+  return /*#__PURE__*/react.createElement("main", {
+    className: "main"
+  }, /*#__PURE__*/react.createElement(General, null), /*#__PURE__*/react.createElement(Scripts, null), /*#__PURE__*/react.createElement("section", {
     className: "section main__devices"
   }, /*#__PURE__*/react.createElement("div", {
     className: "section__title"
@@ -3407,19 +3411,15 @@ function Main() {
     }, tabs[key].items.map(function (item, index) {
       return /*#__PURE__*/react.createElement(Event, _extends({
         key: index
-      }, item, {
-        onSize: onSize
-      }));
+      }, item));
     })));
   }), hasRightScroll && /*#__PURE__*/react.createElement("div", {
     className: "section__arrow",
     onClick: onArrowCLick
   }))));
 }
-setTimeout(function () {
-  var root = client.createRoot(document.getElementById('app'));
-  root.render( /*#__PURE__*/react.createElement(react.Fragment, null, /*#__PURE__*/react.createElement(Header, null), /*#__PURE__*/react.createElement(Main, null)));
-}, 100);
+var root = client.createRoot(document.getElementById('app'));
+root.render( /*#__PURE__*/react.createElement(react.Fragment, null, /*#__PURE__*/react.createElement(Header, null), /*#__PURE__*/react.createElement(Main, null)));
 })();
 
 /******/ })()
