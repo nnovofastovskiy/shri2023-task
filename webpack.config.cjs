@@ -4,6 +4,10 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
 
 module.exports = {
+    mode: 'production',
+    entry: {
+        app: './src/index.js',
+    },
     output: {
         path: path.join(__dirname, "/"), // the bundle output path
         filename: "index.js", // the name of the bundle
