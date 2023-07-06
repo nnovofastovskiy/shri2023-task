@@ -3182,21 +3182,16 @@ function Header() {
     href: "/scripts"
   }, "\u0421\u0446\u0435\u043D\u0430\u0440\u0438\u0438"))));
 }
-;// CONCATENATED MODULE: ./src/index.js
-function _extends() { _extends = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
-function src_slicedToArray(arr, i) { return src_arrayWithHoles(arr) || src_iterableToArrayLimit(arr, i) || src_unsupportedIterableToArray(arr, i) || src_nonIterableRest(); }
-function src_nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-function src_unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return src_arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return src_arrayLikeToArray(o, minLen); }
-function src_arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i]; return arr2; }
-function src_iterableToArrayLimit(arr, i) { var _i = null == arr ? null : "undefined" != typeof Symbol && arr[Symbol.iterator] || arr["@@iterator"]; if (null != _i) { var _s, _e, _x, _r, _arr = [], _n = !0, _d = !1; try { if (_x = (_i = _i.call(arr)).next, 0 === i) { if (Object(_i) !== _i) return; _n = !1; } else for (; !(_n = (_s = _x.call(_i)).done) && (_arr.push(_s.value), _arr.length !== i); _n = !0); } catch (err) { _d = !0, _e = err; } finally { try { if (!_n && null != _i["return"] && (_r = _i["return"](), Object(_r) !== _r)) return; } finally { if (_d) throw _e; } } return _arr; } }
-function src_arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+;// CONCATENATED MODULE: ./src/Event.jsx
 
-
-
-
-function Event(props) {
+function Event(_ref) {
+  var onSize = _ref.onSize,
+    slim = _ref.slim,
+    icon = _ref.icon,
+    iconLabel = _ref.iconLabel,
+    title = _ref.title,
+    subtitle = _ref.subtitle;
   var ref = react.useRef();
-  var onSize = props.onSize;
   react.useEffect(function () {
     var width = ref.current.offsetWidth;
     var height = ref.current.offsetHeight;
@@ -3209,131 +3204,32 @@ function Event(props) {
   });
   return /*#__PURE__*/react.createElement("li", {
     ref: ref,
-    className: 'event' + (props.slim ? ' event_slim' : '')
+    className: 'event' + (slim ? ' event_slim' : '')
   }, /*#__PURE__*/react.createElement("button", {
     className: "event__button"
   }, /*#__PURE__*/react.createElement("span", {
-    className: "event__icon event__icon_".concat(props.icon),
+    className: "event__icon event__icon_".concat(icon),
     role: "img",
-    "aria-label": props.iconLabel
+    "aria-label": iconLabel
   }), /*#__PURE__*/react.createElement("h4", {
     className: "event__title"
-  }, props.title), props.subtitle && /*#__PURE__*/react.createElement("span", {
+  }, title), subtitle && /*#__PURE__*/react.createElement("span", {
     className: "event__subtitle"
-  }, props.subtitle)));
+  }, subtitle)));
 }
+;// CONCATENATED MODULE: ./src/index.js
+function _extends() { _extends = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
+function src_slicedToArray(arr, i) { return src_arrayWithHoles(arr) || src_iterableToArrayLimit(arr, i) || src_unsupportedIterableToArray(arr, i) || src_nonIterableRest(); }
+function src_nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function src_unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return src_arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return src_arrayLikeToArray(o, minLen); }
+function src_arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i]; return arr2; }
+function src_iterableToArrayLimit(arr, i) { var _i = null == arr ? null : "undefined" != typeof Symbol && arr[Symbol.iterator] || arr["@@iterator"]; if (null != _i) { var _s, _e, _x, _r, _arr = [], _n = !0, _d = !1; try { if (_x = (_i = _i.call(arr)).next, 0 === i) { if (Object(_i) !== _i) return; _n = !1; } else for (; !(_n = (_s = _x.call(_i)).done) && (_arr.push(_s.value), _arr.length !== i); _n = !0); } catch (err) { _d = !0, _e = err; } finally { try { if (!_n && null != _i["return"] && (_r = _i["return"](), Object(_r) !== _r)) return; } finally { if (_d) throw _e; } } return _arr; } }
+function src_arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
-// const TABS = {
-//     all: {
-//         title: 'Все',
-//         items: [
-//             {
-//             icon: 'light2',
-//             iconLabel: 'Освещение',
-//             title: 'Xiaomi Yeelight LED Smart Bulb',
-//             subtitle: 'Включено'
-//         }, {
-//             icon: 'light',
-//             iconLabel: 'Освещение',
-//             title: 'D-Link Omna 180 Cam',
-//             subtitle: 'Включится в 17:00'
-//         }, {
-//             icon: 'temp',
-//             iconLabel: 'Температура',
-//             title: 'Elgato Eve Degree Connected',
-//             subtitle: 'Выключено до 17:00'
-//         }, {
-//             icon: 'light',
-//             iconLabel: 'Освещение',
-//             title: 'LIFX Mini Day & Dusk A60 E27',
-//             subtitle: 'Включится в 17:00'
-//         }, {
-//             icon: 'light2',
-//             iconLabel: 'Освещение',
-//             title: 'Xiaomi Mi Air Purifier 2S',
-//             subtitle: 'Включено'
-//         }, {
-//             icon: 'light',
-//             iconLabel: 'Освещение',
-//             title: 'Philips Zhirui',
-//             subtitle: 'Включено'
-//         }, {
-//             icon: 'light',
-//             iconLabel: 'Освещение',
-//             title: 'Philips Zhirui',
-//             subtitle: 'Включено'
-//         }, {
-//             icon: 'light2',
-//             iconLabel: 'Освещение',
-//             title: 'Xiaomi Mi Air Purifier 2S',
-//             subtitle: 'Включено'
-//         }
-//     ]},
-//     kitchen: {
-//         title: 'Кухня',
-//         items: [{
-//             icon: 'light2',
-//             iconLabel: 'Освещение',
-//             title: 'Xiaomi Yeelight LED Smart Bulb',
-//             subtitle: 'Включено'
-//         }, {
-//             icon: 'temp',
-//             iconLabel: 'Температура',
-//             title: 'Elgato Eve Degree Connected',
-//             subtitle: 'Выключено до 17:00'
-//         }]
-//     },
-//     hall: {
-//         title: 'Зал',
-//         items: [{
-//             icon: 'light',
-//             iconLabel: 'Освещение',
-//             title: 'Philips Zhirui',
-//             subtitle: 'Выключено'
-//         }, {
-//             icon: 'light2',
-//             iconLabel: 'Освещение',
-//             title: 'Xiaomi Mi Air Purifier 2S',
-//             subtitle: 'Выключено'
-//         }]
-//     },
-//     lights: {
-//         title: 'Лампочки',
-//         items: [{
-//             icon: 'light',
-//             iconLabel: 'Освещение',
-//             title: 'D-Link Omna 180 Cam',
-//             subtitle: 'Включится в 17:00'
-//         }, {
-//             icon: 'light',
-//             iconLabel: 'Освещение',
-//             title: 'LIFX Mini Day & Dusk A60 E27',
-//             subtitle: 'Включится в 17:00'
-//         }, {
-//             icon: 'light2',
-//             iconLabel: 'Освещение',
-//             title: 'Xiaomi Mi Air Purifier 2S',
-//             subtitle: 'Включено'
-//         }, {
-//             icon: 'light',
-//             iconLabel: 'Освещение',
-//             title: 'Philips Zhirui',
-//             subtitle: 'Включено'
-//         }]
-//     },
-//     cameras: {
-//         title: 'Камеры',
-//         items: [{
-//             icon: 'light2',
-//             iconLabel: 'Освещение',
-//             title: 'Xiaomi Mi Air Purifier 2S',
-//             subtitle: 'Включено'
-//         }]
-//     }
-// };
-// for (let i = 0; i < 6; ++i) {
-//     TABS.all.items = TABS.all.items.concat(TABS.all.items);
-// }
+
+
+
+
 var TABS_KEYS = Object.keys(tabs);
 function Main() {
   var ref = react.useRef();
