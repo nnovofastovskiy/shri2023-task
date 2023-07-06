@@ -3317,8 +3317,8 @@ function src_arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 var TABS_KEYS = Object.keys(tabs);
 function Main() {
   var ref = react.useRef();
-  // const initedRef = React.useRef(false);
-  var _React$useState = react.useState('all'),
+  var initedRef = react.useRef(false);
+  var _React$useState = react.useState(''),
     _React$useState2 = src_slicedToArray(_React$useState, 2),
     activeTab = _React$useState2[0],
     setActiveTab = _React$useState2[1];
@@ -3326,14 +3326,12 @@ function Main() {
     _React$useState4 = src_slicedToArray(_React$useState3, 2),
     hasRightScroll = _React$useState4[0],
     setHasRightScroll = _React$useState4[1];
-
-  // React.useEffect(() => {
-  //     if (!activeTab && !initedRef.current) {
-  //         initedRef.current = true;
-  //         setActiveTab(new URLSearchParams(location.search).get('tab') || 'all');
-  //     }
-  // });
-
+  react.useEffect(function () {
+    if (!activeTab && !initedRef.current) {
+      initedRef.current = true;
+      setActiveTab(new URLSearchParams(location.search).get('tab') || 'all');
+    }
+  });
   var onSelectInput = function onSelectInput(event) {
     setActiveTab(event.target.value);
   };
