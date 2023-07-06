@@ -24,10 +24,13 @@ function Main() {
         setActiveTab(event.target.value);
     };
 
+
     let sizes = [];
-    const onSize = size => {
+    const onSize = React.useCallback((size) => {
         sizes.push(size);
-    };
+    }, []);
+
+
 
     React.useEffect(() => {
         const sumWidth = sizes.reduce((acc, item) => acc + item.width, 0);

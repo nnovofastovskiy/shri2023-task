@@ -3252,9 +3252,9 @@ function Main() {
     setActiveTab(event.target.value);
   };
   var sizes = [];
-  var onSize = function onSize(size) {
+  var onSize = react.useCallback(function (size) {
     sizes.push(size);
-  };
+  }, []);
   react.useEffect(function () {
     var sumWidth = sizes.reduce(function (acc, item) {
       return acc + item.width;
