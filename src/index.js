@@ -28,7 +28,7 @@ function Main() {
     let sizes = [];
     const onSize = React.useCallback((size) => {
         sizes.push(size);
-    }, []);
+    }, [sizes]);
 
 
 

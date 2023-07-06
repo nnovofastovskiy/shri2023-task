@@ -3254,7 +3254,7 @@ function Main() {
   var sizes = [];
   var onSize = react.useCallback(function (size) {
     sizes.push(size);
-  }, []);
+  }, [sizes]);
   react.useEffect(function () {
     var sumWidth = sizes.reduce(function (acc, item) {
       return acc + item.width;
