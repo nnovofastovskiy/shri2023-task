@@ -10,13 +10,15 @@ module.exports = {
     },
     output: {
         path: path.join(__dirname, "/"), // the bundle output path
-        filename: "index.js", // the name of the bundle
+        filename: "[name].[contenthash].js", // the name of the bundle
+        asyncChunks: true,
     },
     plugins: [
         new HtmlWebpackPlugin({
             template: "src/index.html", // to import index.html file inside index.js
-            // minify: CssMinimizerPlugin
+            // minify: true,
         }),
+        // new MiniCssExtractPlugin(),
     ],
     devServer: {
         port: 3030, // you can change the port
@@ -31,27 +33,36 @@ module.exports = {
                 },
             },
             {
-                test: /\.css$/, // styles files
-                use: [MiniCssExtractPlugin.loader, 'css-loader',],
+                test: /\.html$/i,
+                loader: 'html-loader',
+            },
+            // {
+            //     test: /\.css$/i,
+            //     use: [
+            //         // MiniCssExtractPlugin.loader,
+            //         // "style-loader",
+            //         // 'css-loader'
+            //     ],
+            // },
+            {
+                test: /\.(png|svg|jpg|jpeg|gif|ico)$/i,
+                type: 'asset/resource',
             },
             {
-                test: /\.(png|woff|woff2|eot|ttf|svg)$/, // to import images and fonts
-                loader: "url-loader",
-                options: { limit: false },
+                test: /\.(woff|woff2|eot|ttf|otf)$/i,
+                type: 'asset/resource',
             },
         ],
     },
     resolve: {
-        extensions: ['.jsx', '.js', '.css'],
+        extensions: ['.jsx', '.js'],
         // @todo настроить resolve
     },
-    optimization: {
-        minimize: true,
-        minimizer: [
-            new CssMinimizerPlugin({
-                include: /\.css$/,
-            }),
-        ],
-    },
-    plugins: [new MiniCssExtractPlugin()],
+    // optimization: {
+    //     minimize: true,
+    //     // minimizer: [
+    //     //     new CssMinimizerPlugin(),
+    //     // ],
+    // },
+    // plugins: [new MiniCssExtractPlugin()],
 };
