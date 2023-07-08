@@ -15,6 +15,7 @@ module.exports = {
     plugins: [
         new HtmlWebpackPlugin({
             template: "src/index.html", // to import index.html file inside index.js
+            // minify: CssMinimizerPlugin
         }),
     ],
     devServer: {
@@ -31,8 +32,7 @@ module.exports = {
             },
             {
                 test: /\.css$/, // styles files
-                use: [MiniCssExtractPlugin.loader,
-                { loader: 'css-loader', options: { sourceMap: true } },],
+                use: [MiniCssExtractPlugin.loader, 'css-loader',],
             },
             {
                 test: /\.(png|woff|woff2|eot|ttf|svg)$/, // to import images and fonts
@@ -40,6 +40,10 @@ module.exports = {
                 options: { limit: false },
             },
         ],
+    },
+    resolve: {
+        extensions: ['.jsx', '.js', '.css'],
+        // @todo настроить resolve
     },
     optimization: {
         minimize: true,

@@ -21,6 +21,7 @@
   },
   "homepage": "https://github.com/nnovofastovskiy/shri2023-task#readme",
   "dependencies": {
+    "image-minimizer-webpack-plugin": "^3.8.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },
