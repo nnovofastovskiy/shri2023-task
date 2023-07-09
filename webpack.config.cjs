@@ -1,5 +1,7 @@
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const HtmlWebpackPrerenderPlugin = require('html-webpack-prerender-plugin');
+
 const StaticSiteGeneratorPlugin = require("static-site-generator-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
@@ -13,6 +15,7 @@ module.exports = {
         path: path.join(__dirname, "/"), // the bundle output path
         filename: "[name].[contenthash].js", // the name of the bundle
         asyncChunks: true,
+        libraryTarget: 'umd',
     },
     plugins: [
         new HtmlWebpackPlugin({
@@ -20,7 +23,8 @@ module.exports = {
             minify: true,
             // inject: true,
             // chunks: ['index'],
-        })
+        }),
+        new HtmlWebpackPrerenderPlugin({ main: '#app' }),
         // new MiniCssExtractPlugin(),
     ],
     devServer: {
