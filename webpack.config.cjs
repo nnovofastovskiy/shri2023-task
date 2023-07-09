@@ -1,5 +1,6 @@
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const StaticSiteGeneratorPlugin = require("static-site-generator-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
 
@@ -16,8 +17,10 @@ module.exports = {
     plugins: [
         new HtmlWebpackPlugin({
             template: "src/index.html", // to import index.html file inside index.js
-            // minify: true,
-        }),
+            minify: true,
+            // inject: true,
+            // chunks: ['index'],
+        })
         // new MiniCssExtractPlugin(),
     ],
     devServer: {
@@ -30,6 +33,10 @@ module.exports = {
                 exclude: /node_modules/, // excluding the node_modules folder
                 use: {
                     loader: "babel-loader",
+                    options: {
+                        presets: ["@babel/preset-react"],    // используемые плагины
+                        // compact: true,
+                    }
                 },
             },
             {
